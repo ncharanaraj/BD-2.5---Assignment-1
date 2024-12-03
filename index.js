@@ -232,37 +232,25 @@ let products = [
 
 // Q1 Get the products sorted by popularity
 
-function sortByRating(product1, product2) {
-  return product2.rating - product1.rating;
-}
-
 app.get('/products/sort/popularity', (req, res) => {
   let sortedProducts = products.slice();
-  sortedProducts.sort(sortByRating);
+  sortedProducts.sort((product1, product2) => product2.rating - product1.rating);
   res.json({ products: sortedProducts });
 });
 
 // Q2 Get the products sorted by “high-to-low” price
 
-function sortByPrice(product1, product2) {
-  return product2.price - product1.price;
-}
-
 app.get('/products/sort/price-high-to-low', (req, res) => {
   let sortedProducts = products.slice();
-  sortedProducts.sort(sortByPrice);
+  sortedProducts.sort((product1, product2) => product2.price - product1.price);
   res.json({ products: sortedProducts });
 });
 
 // Q3 Get the products sorted by “low-to-high” price
 
-function sortByPrice(product1, product2) {
-  return product1.price - product2.price;
-}
-
 app.get('/products/sort/price-low-to-high', (req, res) => {
   let sortedProducts = products.slice();
-  sortedProducts.sort(sortByPrice);
+  sortedProducts.sort((product1, product2) => product1.price - product2.price);
   res.json({ products: sortedProducts });
 });
 
